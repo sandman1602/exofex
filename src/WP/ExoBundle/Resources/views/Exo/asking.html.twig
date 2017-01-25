@@ -1,0 +1,90 @@
+{% extends "WPExoBundle::layout.html.twig" %}
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/modern-business.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    Demandes - {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1 class="page-header">Demandes</h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{ path ("wp_exo_homepage") }}">Home</a>
+                    </li>
+                    <li class="active">Demandes</li>
+                </ol>
+            </div>
+        </div>
+        <div id="asking">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="col-md-4 pull-right">
+                        <a href="{{ path('wp_exo_askingAdd') }}">
+                            <button type="button" class="btn subscribe btn-success ribbon">Souscrire une demande
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% for asking in listAsking %}
+                {% if asking.isValidate == 0 %}
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="askingBox">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h4>
+                                            <strong><a href="{{ path('wp_exo_askingPost',{'id': asking.id}) }}">{{ asking.title }}</a></strong>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <a href="{{ path('wp_exo_profile',{'user': asking.user}) }}" class="thumbnail">
+                                            <img src="{{ asset(asking.user.image.webPath) }}" width="260" height="180"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-8 descriptionBox">
+                                        <p>
+                                            {{ asking.description | slice(0,400) }}{% if asking.description | length > 400 %} . . .{% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>
+                                            <i class="icon-user"></i> Publié par <a
+                                                    href="{{ path('wp_exo_profile',{'user':asking.user}) }}">{{ asking.user }}</a>
+                                            <br/><i class="icon-calendar"></i> le {{ asking.date | date('d/m/Y') }}
+                                            {% if asking.isValidate == 0 %}
+                                                <br/><i class="icon-comment"></i><a {#class="btn"#}
+                                                    href="{{ path('wp_exo_askingPost',{'id': asking.id}) }}">Proposer
+                                                une
+                                                offre</a>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if nbPages>1 %}
+            <ul class="pagination">
+                {% for p in range(1, nbPages) %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                        <a href="{{ path('wp_exo_asking',{'page':p}) }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

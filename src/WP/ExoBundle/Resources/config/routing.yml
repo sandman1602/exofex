@@ -1,0 +1,142 @@
+#home#
+wp_exo_homepage:
+    path:     /
+    defaults:
+        _controller: WPExoBundle:Exo:index
+#demandes#
+wp_exo_asking:
+    path:     /asking/p/{page}
+    defaults:
+        _controller: WPExoBundle:Exo:asking
+        page: 1
+    requirements:
+        page: \d*
+
+
+wp_exo_askingAdd:
+    path:    /asking/add
+    defaults:
+        _controller: WPExoBundle:Exo:askingAdd
+
+#demandes par post#
+wp_exo_askingPost:
+    path:     /asking/{id}/{page}
+    defaults:
+        _controller: WPExoBundle:Exo:askingPost
+        page: 1
+    requirements:
+        id: \d+
+        page: \d*
+
+
+WP_exo_askingModif:
+    path:   /askingModif/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:askingModif
+    requirements:
+        id: \d+
+
+wp_exo_askingDel:
+    path:   /askingDel/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:askingDel
+    requirements:
+        id: \d+
+
+
+#offre#
+wp_exo_supply:
+    path:     /supply/p/{page}
+    defaults:
+        _controller: WPExoBundle:Exo:supply
+        page: 1
+    requirements:
+        page: \d*
+
+wp_exo_supplyAdd:
+    path:    /supply/add
+    defaults:
+        _controller: WPExoBundle:Exo:supplyAdd
+
+# offre par post#
+wp_exo_supplyPost:
+    path:     /supply/{id}/{page}
+    defaults:
+        _controller: WPExoBundle:Exo:supplyPost
+        page: 1
+    requirements:
+        id: \d+
+        page: \d*
+
+
+WP_exo_supplyModif:
+    path:   /supplyModif/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:supplyModif
+    requirements:
+        id: \d+
+
+
+wp_exo_supplyDel:
+    path:   /supplyDel/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:supplyDel
+    requirements:
+        id: \d+
+
+
+#profil#
+wp_exo_profile:
+    path:     /profile/{user}
+    defaults:
+        _controller: WPExoBundle:Exo:profile
+        user: user
+
+wp_exo_profileModif:
+    path:   /profileModif/{user}
+    defaults:
+        _controller: WPExoBundle:Exo:profileModif
+    requirements:
+        id: \d+
+
+#contact#
+wp_exo_contact:
+    path:    /contact
+    defaults:
+        _controller: WPExoBundle:Exo:contact
+
+wp_exo_search:
+    path:   /search
+    defaults:
+        _controller: WPExoBundle:Exo:search
+
+wp_exo_askingPostValid:
+    path:   /askingPostValid/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:askingPostValid
+    requirements:
+        id: \d+
+
+wp_exo_supplyPostValid:
+    path:   /supplyPostValid/{id}
+    defaults:
+        _controller: WPExoBundle:Exo:supplyPostValid
+    requirements:
+        id: \d+
+
+#Admin#
+wp_exo_adminIndex:
+    path: /admin
+    defaults:
+       _controller: WPExoBundle:Admin:adminIndex
+
+
+wp_exo_profileDel:
+    path: /profileDel/{user}
+    defaults:
+        _controller: WPExoBundle:Admin:profileDel
+
+wp_exo_userPromot:
+    path: /userPromot/{user}
+    defaults:
+        _controller: WPExoBundle:Admin:userPromot

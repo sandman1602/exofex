@@ -1,0 +1,227 @@
+{% extends "WPExoBundle::layout.html.twig" %}
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/modern-business.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    Recherche- {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <h1 class="page-header">Résultat de la recherche</h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{ path ("wp_exo_homepage") }}">Home</a>
+                    </li>
+                    <li class="active">Résultat de la recherche</li>
+                </ol>
+            </div>
+        </div>
+        {% if app.request.get('filter')== 'all' %}
+            <button class="login-button btn allTitle" autofocus>Tous</button>
+            <button class="login-button btn askingTitle">Demandes</button>
+            <button class="login-button btn supplyTitle">Offres</button>
+            <button class="login-button btn userTitle">Utilisateurs</button>
+        {% endif %}
+        <div class="allSearch">
+            <div class="askingSearch">
+                {% for asking in askings %}
+                    <div id="asking">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="askingBox">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h4>
+                                                <strong><a href="{{ path('wp_exo_askingPost',{'id': asking.id}) }}">{{ asking.title }}</a></strong>
+                                            </h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="ask{{ asking.id }}"
+                                                 class="col-md-1 pull-right {% if asking.isValidate %}isvalid{% endif %}">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <a href="{{ path('wp_exo_profile',{'user': asking.user}) }}"
+                                               class="thumbnail">
+                                                <img src="{{ asset(asking.user.image.webPath) }}" width="260"
+                                                     height="180"
+                                                     alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-8 descriptionBox">
+                                            <p>
+                                                {{ asking.description | slice(0,400) }}{% if asking.description | length > 400 %} . . .{% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p>
+                                                <i class="icon-user"></i> Publié par <a
+                                                        href="{{ path('wp_exo_profile',{'user':asking.user}) }}">{{ asking.user }}</a>
+                                                <br/><i class="icon-calendar"></i> le {{ asking.date | date('d/m/Y') }}
+                                                <br/><i class="icon-comment"></i><a {#class="btn"#}
+                                                        href="{{ path('wp_exo_askingPost',{'id': asking.id}) }}">Proposer
+                                                    une
+                                                    offre</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="supplySearch">
+                {% for supply in supplys %}
+                    <div id="asking">
+                        {#<h4>ceci est une offre</h4>#}
+                        <div class="row">
+
+                            <div class="col-md-10">
+                                <div class="askingBox">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h4>
+                                                <strong><a href="{{ path('wp_exo_supplyPost',{'id':supply.id}) }}">{{ supply.title }}</a></strong>
+                                            </h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="sup{{ supply.id }}"
+                                                 class="col-md-1 pull-right {% if supply.isValidate %}isvalid{% endif %}">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <a href="{{ path('wp_exo_profile',{'user':supply.user}) }}"
+                                               class="thumbnail">
+                                                <img src="{{ asset(supply.user.image.webPath) }}" width="260"
+                                                     height="180"
+                                                     alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-8 descriptionBox">
+                                            <p>
+                                                {{ supply.description | slice(0,400) }}{% if supply.description | length > 400 %} . . .{% endif %}
+                                            </p>
+                                            {#<p><a class="btn" href="{{ path('wp_exo_supplyPost',{'id':supply.id}) }}">Voir plus</a></p>#}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p>
+                                                <i class="icon-user"></i> Publié par <a
+                                                        href="{{ path('wp_exo_profile',{'user':supply.user}) }}">{{ supply.user }} </a>
+                                                <br/><i class="icon-calendar"></i> le {{ supply.date | date('d/m/Y') }}
+                                                <br/><i class="icon-comment"></i> <a
+                                                        href="{{ path('wp_exo_supplyPost',{'id':supply.id}) }}">Proposer
+                                                    une
+                                                    demande de service</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="userSearch">
+                {% for myUser in profiles %}
+                    <div id="profile">
+                        {#<h4>ceci est un profil</h4>#}
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="profileBox">
+                                    {#<div class="col-md-10 profileBox">#}
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="well well-sm">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <a class="img-circle img-responsive"
+                                                           href="{{ path('wp_exo_profile',{'user': myUser.username}) }}"
+                                                           class="thumbnail">
+                                                            <img src="{{ asset(myUser.image.webPath) }}" alt=""
+                                                                 class="img-circle img-responsive"/>
+                                                        </a>
+                                                    </div>
+                                                    {#<div class="col-md-1"></div>#}
+                                                    <div class="col-md-7">
+                                                        <h4 class="myUser"><i class="glyphicon glyphicon-user"></i>
+                                                            <strong><a class="myUser"
+                                                                       href="{{ path('wp_exo_profile',{'user': myUser.username}) }}"> {{ myUser.username }}</a></strong>
+                                                        </h4>
+                                                        <small>
+                                                            <cite title="City, ST">
+                                                                <i class="glyphicon glyphicon-map-marker"></i> {{ myUser.adresse }}
+                                                            </cite>
+                                                        </small>
+                                                        <p>
+                                                            <i class="glyphicon glyphicon-gift"></i> {{ myUser.birth|date ('d/m/Y') }}
+                                                            <br/>
+                                                            <i class="glyphicon glyphicon-envelope"></i><a class="mailto" href="mailto:{{ myUser.email }}"> {{ myUser.email }}</a>
+                                                            <br/>
+                                                            <i class="glyphicon glyphicon-phone"></i> {{ myUser.phone }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset ("public/js/jquery.js") }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".allTitle").click(function () {
+                $('.askingSearch').css('display', 'block');
+                $('.supplySearch').css('display', 'block');
+                $('.userSearch').css('display', 'block');
+            });
+
+            $(".askingTitle").click(function () {
+                $('.askingSearch').css('display', 'block');
+                $('.supplySearch').css('display', 'none');
+                $('.userSearch').css('display', 'none');
+            });
+
+            $(".supplyTitle").click(function () {
+                $('.askingSearch').css('display', 'none');
+                $('.supplySearch').css('display', 'block');
+                $('.userSearch').css('display', 'none');
+
+            });
+
+            $(".userTitle").click(function () {
+                $('.askingSearch').css('display', 'none');
+                $('.supplySearch').css('display', 'none');
+                $('.userSearch').css('display', 'block');
+
+            });
+
+        });
+
+    </script>
+{% endblock %}

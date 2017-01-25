@@ -1,0 +1,102 @@
+{% extends "::layout.html.twig" %}
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/sb-admin.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/adminExofex.css") }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <!-- Navigation -->
+    <div id="template">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="row">
+                    <div class="search-top col-md-3 col-md-offset-9 col-xs-12">
+                        <form action="{{ path('wp_exo_search') }}" class="search-form">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" class="form-control" name="search" id="search"
+                                       placeholder="Recherche">
+                                <select class="filter" name="filter">
+                                    <option value='all' selected='selected'>Général</option>
+                                    <option value='asking'>Demandes</option>
+                                    <option value='supply'>Offres</option>
+                                    <option value='user'>Utilisateurs</option>
+                                </select>
+                                {#<span class="glyphicon glyphicon-chevron-down form-control-feedback">#}
+
+                                {#</span>#}
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path ("wp_exo_homepage") }}">EXofEX</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a {% if app.request.get('_route') == "wp_exo_homepage" %}class="current"
+                               {% endif %}href="{{ path ("wp_exo_homepage") }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a {% if app.request.get('_route') == "wp_exo_asking" %}class="current"
+                               {% endif %}href="{{ path('wp_exo_asking') }}">Demandes</a>
+                        </li>
+                        <li>
+                            <a {% if app.request.get('_route') == "wp_exo_supply" %}class="current"
+                               {% endif %}href="{{ path('wp_exo_supply') }}">Offres</a>
+                        </li>
+                        <li>
+                            <a {% if app.request.get('_route') == "wp_exo_contact" %}class="current"
+                               {% endif %}href="{{ path('wp_exo_contact') }}">Contact</a>
+                        </li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li>
+                                <a {% if app.request.get('_route') == "wp_exo_profile" %}class="current"
+                                   {% endif %}href="{{ path ("wp_exo_profile",{'user':app.user.username}) }}">Profil</a>
+                            </li>
+                            <li><a href="{{ path ("fos_user_security_logout") }}">Déconnexion</a></li>
+                        {% else %}
+                            <li>
+                                <a{% if app.request.get('_route') == "fos_user_security_login" %} class="current" {% endif %}
+                                        href="{{ path ("fos_user_security_login") }}">Connexion | Inscription</a>
+                            </li>
+                        {% endif %}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <li><a {% if app.request.get('_route') == "wp_exo_contact" %}class="current"
+                                   {% endif %}href="{{ path ("wp_exo_adminIndex") }}">Admin</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        {% block content %}
+        {% endblock %}
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright pull-right">Copyright &copy; | www.EXofEX.be | 2016</p>
+                </div>
+            </div>
+        </footer>
+        <div class="clear"></div>
+    </div>
+{% endblock %}

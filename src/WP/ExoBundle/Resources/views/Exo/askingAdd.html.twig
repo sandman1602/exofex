@@ -1,0 +1,36 @@
+{% extends "WPExoBundle::layout.html.twig" %}
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/modern-business.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    Souscrire une demande - {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div id="askingAdd">
+            <div class="row">
+                <div class="col-md-10 col-xs-12">
+                    <h1 class="page-header">Souscrire une demande</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ path ("wp_exo_homepage") }}">Home</a>
+                        </li>
+                        <li><a href="{{ path ("wp_exo_asking") }}">Demandes</a>
+                        </li>
+                        <li class="active">Souscrire une demande</li>
+                    </ol>
+                </div>
+            </div>
+            {% form_theme form "bootstrap_3_layout.html.twig" %}
+            <!--<div class="col-md-2"></div>-->
+            <div class="row">
+                <!--<div class="col-md text-center">-->
+                <div class="col-md-8 col-xs-12">
+                    {{ form(form) }}
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

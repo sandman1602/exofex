@@ -67,7 +67,7 @@
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <li>
                                 <a {% if app.request.get('_route') == "wp_exo_profile" %}class="current"
-                                   {% endif %}href="{{ path ("wp_exo_profile",{'user':app.user.username}) }}">Profil</a>
+                                   {% endif %}href="{{ path ("wp_exo_profile",{'user':app.user.username}) }}">{{ app.user.username }}</a>
                             </li>
                             <li><a href="{{ path ("fos_user_security_logout") }}">Déconnexion</a></li>
                         {% else %}
@@ -77,7 +77,7 @@
                             </li>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
-                            <li><a {% if app.request.get('_route') == "wp_exo_contact" %}class="current"
+                            <li><a {% if app.request.get('_route') == "wp_exo_admin" %}class="current"
                                    {% endif %}href="{{ path ("wp_exo_adminIndex") }}">Admin</a>
                             </li>
                         {% endif %}

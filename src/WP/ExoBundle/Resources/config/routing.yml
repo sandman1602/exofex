@@ -124,6 +124,13 @@ wp_exo_supplyPostValid:
     requirements:
         id: \d+
 
+
+
+wp_exo_mailer:
+    path: /mailer
+    defaults:
+        _controller: WPExoBundle:Exo:mailer
+
 #Admin#
 wp_exo_adminIndex:
     path: /admin
@@ -140,3 +147,4 @@ wp_exo_userPromot:
     path: /userPromot/{user}
     defaults:
         _controller: WPExoBundle:Admin:userPromot
+

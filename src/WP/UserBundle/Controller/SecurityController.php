@@ -13,7 +13,8 @@ class SecurityController extends Controller
     public function loginAction(Request $request)
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('wp_exo_homepage');
+            return $this->redirectToRoute('wp_exo_profile',['user'=>app.user.username]);
+//            return $this->redirectToRoute('wp_exo_profile', array('user' => 'sandman'));
         }
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -49,5 +50,8 @@ class SecurityController extends Controller
             'msgError'=> $msgError
         ));
     }
+
+
+
 
 }

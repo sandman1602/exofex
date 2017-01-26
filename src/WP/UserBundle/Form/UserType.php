@@ -3,6 +3,7 @@
 namespace WP\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +27,7 @@ class UserType extends AbstractType {
             ->add('adresse', TextType::class, array('label'=>false, 'attr'=>
                 ['placeholder'=>'Adresse complète']))
             ->add('phone', TextType::class, array('label'=>false, 'attr'=>['placeholder'=>'N° de téléphone']))
-            ->add('birth', DateType::class, array('label'=>false, 'widget'=>'single_text', 'attr'=>['placeholder'=>'Date de naissance']))
+            ->add('birth', BirthdayType::class, array('label'=>'Date de naissance'))
             ->add('image', ImageType::class, array('label'=>false, 'attr'=>[
                 'class'=>'chooseFile'
 

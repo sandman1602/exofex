@@ -148,3 +148,7 @@ wp_exo_userPromot:
     defaults:
         _controller: WPExoBundle:Admin:userPromot
 
+wp_exo_homeAdmin:
+    path: /homeAdmin
+    defaults:
+        _controller: WPExoBundle:Admin:homeAdmin

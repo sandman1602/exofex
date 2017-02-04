@@ -22,7 +22,11 @@ class ExoController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('WPExoBundle:Exo:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $home = $em->getRepository('WPExoBundle:Homepage')->findOneBy([]);
+        return $this->render('WPExoBundle:Exo:index.html.twig',array(
+            'home' => $home
+        ));
     }
 
 

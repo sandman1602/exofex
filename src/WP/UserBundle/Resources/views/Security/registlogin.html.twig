@@ -64,6 +64,7 @@
                         <!-- end:Main Form -->
                     </div>
                     <!-- REGISTRATION FORM -->
+
                     <div class="col-md-2"></div>
                     <div class="col-md-5 col-xs-12" style="padding:0">
                         <div class="logo">Inscription</div>
@@ -80,7 +81,9 @@
                                         {% endif %}
                                         {{ form(form) }}
                                     </div>
-
+                                    {% for flashMessage in app.session.flashbag.get('success') %}
+                                        {{ flashMessage }}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

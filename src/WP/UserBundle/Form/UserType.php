@@ -27,7 +27,7 @@ class UserType extends AbstractType {
             ->add('adresse', TextType::class, array('label'=>false, 'attr'=>
                 ['placeholder'=>'Adresse complète']))
             ->add('phone', TextType::class, array('label'=>false, 'attr'=>['placeholder'=>'N° de téléphone']))
-            ->add('birth', BirthdayType::class, array('label'=>'Date de naissance'))
+            ->add('birth', BirthdayType::class, array('label'=>'Date de naissance', 'attr'=> ['class' => 'birthday']))
             ->add('image', ImageType::class, array('label'=>false, 'attr'=>[
                 'class'=>'chooseFile'
 

@@ -15,10 +15,12 @@ use Symfony\Component\HttpFoundation\Response;
 use WP\ExoBundle\Entity\Asking;
 use WP\ExoBundle\Entity\CommentSupply;
 use WP\ExoBundle\Entity\CommentAsking;
+use WP\ExoBundle\Entity\Homepage;
 use WP\ExoBundle\Form\AskingType;
 use WP\ExoBundle\Entity\Supply;
 use WP\ExoBundle\Form\CommentSupplyType;
 use WP\ExoBundle\Form\CommentAskingType;
+use WP\ExoBundle\Form\HomepageType;
 use WP\ExoBundle\Form\SupplyType;
 use WP\ExoBundle\Entity\Contact;
 use WP\ExoBundle\Form\ContactType;
@@ -71,5 +73,29 @@ class AdminController extends Controller
         $user->setRoles(array('ROLE_USER','ROLE_ADMIN'));
         $em->flush();
         return $this->redirectToRoute('wp_exo_adminIndex');
+    }
+    public function homeAdminAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $home = $em->getRepository('WPExoBundle:Homepage')->findOneBy([]);
+
+        if($home == null) {
+            $home = new Homepage();
+        }
+
+        $form = $this->get('form.factory')->create(HomepageType::class,$home);
+
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->persist($home);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice','Données modifiées');
+
+            return $this->redirectToRoute('wp_exo_homeAdmin');
+        }
+
+        return $this->render('WPExoBundle:Admin:homeAdmin.html.twig', array(
+                'form' => $form->createView()
+            )
+        );
     }
 }

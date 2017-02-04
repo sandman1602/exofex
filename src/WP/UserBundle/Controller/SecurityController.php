@@ -12,15 +12,15 @@ class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('wp_exo_profile',['user'=>app.user.username]);
-//            return $this->redirectToRoute('wp_exo_profile', array('user' => 'sandman'));
-        }
+//        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+//            return $this->redirectToRoute('wp_exo_profile', ['user' => app . user . username]);
+////            return $this->redirectToRoute('wp_exo_profile', array('user' => 'sandman'));
+//        }
         $authenticationUtils = $this->get('security.authentication_utils');
 
         $user = new User();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->get('form.factory')->create(UserType::class, $user, ['label-type'=>'S\'inscire']);
+        $form = $this->get('form.factory')->create(UserType::class, $user, ['label-type' => 'S\'inscire']);
         $msgError = null;
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -33,7 +33,8 @@ class SecurityController extends Controller
                     $em->persist($user);
                     $em->flush();
 
-                    $request->getSession()->getFlashBag()->add('notice', 'Message bien enregistré.');
+//                    $request->getSession()->getFlashBag()->add('notice', 'Message bien enregistré.');
+                    $request->getSession()->getFlashBag()->add('success', 'Le message qui s\'affichera est celui ci !');
 
                     return $this->redirectToRoute('fos_user_security_login');
                 } else {
@@ -44,14 +45,12 @@ class SecurityController extends Controller
             }
         }
 
-        return $this->render('WPUserBundle:Security:registlogin.html.twig',array(
+        return $this->render('WPUserBundle:Security:registlogin.html.twig', array(
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'form' => $form->createView(),
-            'msgError'=> $msgError
+            'msgError' => $msgError
         ));
     }
-
-
 
 
 }

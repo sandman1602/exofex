@@ -631,6 +631,20 @@ button.login-button.btn.askingTitle:focus,button.login-button.btn.supplyTitle:fo
 #register .form-control{
     color: #e2c36a  !important;
 }
+#register select#user_birth_year.form-control{
+    color: #333333 !important;
+    background-color: #ffcb58 !important;
+    margin-right: 20px;
+}
+#register select#user_birth_month.form-control{
+    color: #333333 !important;
+    background-color: #ffcb58 !important;
+    margin-right: 20px;
+}
+#register select#user_birth_day.form-control{
+    color: #333333 !important;
+    background-color: #ffcb58 !important;
+}
 #register .logo{
     color: #ffcb58 !important;
     font-size: 24px !important;

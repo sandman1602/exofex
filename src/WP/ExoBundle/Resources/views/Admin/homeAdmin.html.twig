@@ -1,0 +1,186 @@
+{% extends "WPExoBundle::layout_admin.html.twig" %}
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/sb-admin.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/adminExofex.css") }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    admin - {{ parent() }}
+{% endblock %}
+{% block content %}
+
+    <div id="adminIndex" class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="page-header">
+                    Gestion de l'accueil
+                    {#<small>Notifications du site</small>#}
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Gestion de l'accueil
+                    </li>
+                </ol>
+            </div>
+            {#</div>#}
+            {#</div>#}
+            {% form_theme form "bootstrap_3_layout.html.twig" %}
+            <div class="col-md-8">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Slogan</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.title1) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Titre du 1er article</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.titleArticle1) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Description du 1er article</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.textArticle1) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Titre du second article</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.titleArticle2) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Description du second article</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.textArticle2) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Annonce de la page contact</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.textContactme) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Lien externe 1</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.linkImg1) }}
+                        {{ form_row(form.img1)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Lien externe 2</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.linkImg2) }}
+                        {{ form_row(form.img2)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Règle du site</h4>
+                    </div>
+                    <div class="col-md-7">
+                        {{ form_errors(form) }}
+                        {{ form_row(form.textLogo) }}
+                        {{ form_row(form.logo)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+    {% block js %}
+        {#<script src="{{ asset ("public/js/jquery.js") }}"></script>#}
+        <script src="{{ asset ("public/js/exoProfile.js") }}"></script>
+    {% endblock %}
+
+{% endblock %}

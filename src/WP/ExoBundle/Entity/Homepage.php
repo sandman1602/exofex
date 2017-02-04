@@ -24,51 +24,82 @@ class Homepage
     /**
      * @var string
      *
-     * @ORM\Column(name="titleh1", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title1", type="string", length=255)
      */
-    private $titleh1;
+    private $title1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titleh2", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titleArticle1", type="string", length=255)
      */
-    private $titleh2;
+    private $titleArticle1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="textArticle1", type="text")
      */
-    private $title;
+    private $textArticle1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titleArticle2", type="string", length=255)
      */
-    private $description;
+    private $titleArticle2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titlelink", type="string", length=255, nullable=true)
+     * @ORM\Column(name="textArticle2", type="text")
      */
-    private $titlelink;
+    private $textArticle2;
+
+
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="textContactme", type="text")
      */
-    private $url;
+    private $textContactme;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WP\ExoBundle\Entity\Image",cascade={"persist"})
+     */
+    private $img1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="visitcard", type="text", nullable=true)
+     * @ORM\Column(name="linkImg1", type="string", length=255)
      */
-    private $visitcard;
+    private $linkImg1;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WP\ExoBundle\Entity\Image",cascade={"persist"})
+     */
+    private $img2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkImg2", type="string", length=255)
+     */
+    private $linkImg2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="textLogo", type="text")
+     */
+    private $textLogo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WP\ExoBundle\Entity\Image",cascade={"persist"})
+     */
+    private $logo;
 
 
     /**
@@ -82,171 +113,290 @@ class Homepage
     }
 
     /**
-     * Set titleh1
+     * Set title1
      *
-     * @param string $titleh1
+     * @param string $title1
      *
      * @return Homepage
      */
-    public function setTitleh1($titleh1)
+    public function setTitle1($title1)
     {
-        $this->titleh1 = $titleh1;
+        $this->title1 = $title1;
 
         return $this;
     }
 
     /**
-     * Get titleh1
+     * Get title1
      *
      * @return string
      */
-    public function getTitleh1()
+    public function getTitle1()
     {
-        return $this->titleh1;
+        return $this->title1;
     }
 
     /**
-     * Set titleh2
+     * Set titleArticle1
      *
-     * @param string $titleh2
+     * @param string $titleArticle1
      *
      * @return Homepage
      */
-    public function setTitleh2($titleh2)
+    public function setTitleArticle1($titleArticle1)
     {
-        $this->titleh2 = $titleh2;
+        $this->titleArticle1 = $titleArticle1;
 
         return $this;
     }
 
     /**
-     * Get titleh2
+     * Get titleArticle1
      *
      * @return string
      */
-    public function getTitleh2()
+    public function getTitleArticle1()
     {
-        return $this->titleh2;
+        return $this->titleArticle1;
     }
 
     /**
-     * Set title
+     * Set textArticle1
      *
-     * @param string $title
+     * @param string $textArticle1
      *
      * @return Homepage
      */
-    public function setTitle($title)
+    public function setTextArticle1($textArticle1)
     {
-        $this->title = $title;
+        $this->textArticle1 = $textArticle1;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get textArticle1
      *
      * @return string
      */
-    public function getTitle()
+    public function getTextArticle1()
     {
-        return $this->title;
+        return $this->textArticle1;
     }
 
     /**
-     * Set description
+     * Set titleArticle2
      *
-     * @param string $description
+     * @param string $titleArticle2
      *
      * @return Homepage
      */
-    public function setDescription($description)
+    public function setTitleArticle2($titleArticle2)
     {
-        $this->description = $description;
+        $this->titleArticle2 = $titleArticle2;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get titleArticle2
      *
      * @return string
      */
-    public function getDescription()
+    public function getTitleArticle2()
     {
-        return $this->description;
+        return $this->titleArticle2;
     }
 
     /**
-     * Set titlelink
+     * Set textArticle2
      *
-     * @param string $titlelink
+     * @param string $textArticle2
      *
      * @return Homepage
      */
-    public function setTitlelink($titlelink)
+    public function setTextArticle2($textArticle2)
     {
-        $this->titlelink = $titlelink;
+        $this->textArticle2 = $textArticle2;
 
         return $this;
     }
 
     /**
-     * Get titlelink
+     * Get textArticle2
      *
      * @return string
      */
-    public function getTitlelink()
+    public function getTextArticle2()
     {
-        return $this->titlelink;
+        return $this->textArticle2;
     }
 
     /**
-     * Set url
+     * Set textContactme
      *
-     * @param string $url
+     * @param string $textContactme
      *
      * @return Homepage
      */
-    public function setUrl($url)
+    public function setTextContactme($textContactme)
     {
-        $this->url = $url;
+        $this->textContactme = $textContactme;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get textContactme
      *
      * @return string
      */
-    public function getUrl()
+    public function getTextContactme()
     {
-        return $this->url;
+        return $this->textContactme;
     }
 
     /**
-     * Set visitcard
+     * Set linkImg1
      *
-     * @param string $visitcard
+     * @param string $linkImg1
      *
      * @return Homepage
      */
-    public function setVisitcard($visitcard)
+    public function setLinkImg1($linkImg1)
     {
-        $this->visitcard = $visitcard;
+        $this->linkImg1 = $linkImg1;
 
         return $this;
     }
 
     /**
-     * Get visitcard
+     * Get linkImg1
      *
      * @return string
      */
-    public function getVisitcard()
+    public function getLinkImg1()
     {
-        return $this->visitcard;
+        return $this->linkImg1;
+    }
+
+    /**
+     * Set linkImg2
+     *
+     * @param string $linkImg2
+     *
+     * @return Homepage
+     */
+    public function setLinkImg2($linkImg2)
+    {
+        $this->linkImg2 = $linkImg2;
+
+        return $this;
+    }
+
+    /**
+     * Get linkImg2
+     *
+     * @return string
+     */
+    public function getLinkImg2()
+    {
+        return $this->linkImg2;
+    }
+
+    /**
+     * Set textLogo
+     *
+     * @param string $textLogo
+     *
+     * @return Homepage
+     */
+    public function setTextLogo($textLogo)
+    {
+        $this->textLogo = $textLogo;
+
+        return $this;
+    }
+
+    /**
+     * Get textLogo
+     *
+     * @return string
+     */
+    public function getTextLogo()
+    {
+        return $this->textLogo;
+    }
+
+    /**
+     * Set img1
+     *
+     * @param \WP\ExoBundle\Entity\Image $img1
+     *
+     * @return Homepage
+     */
+    public function setImg1(\WP\ExoBundle\Entity\Image $img1 = null)
+    {
+        $this->img1 = $img1;
+
+        return $this;
+    }
+
+    /**
+     * Get img1
+     *
+     * @return \WP\ExoBundle\Entity\Image
+     */
+    public function getImg1()
+    {
+        return $this->img1;
+    }
+
+    /**
+     * Set img2
+     *
+     * @param \WP\ExoBundle\Entity\Image $img2
+     *
+     * @return Homepage
+     */
+    public function setImg2(\WP\ExoBundle\Entity\Image $img2 = null)
+    {
+        $this->img2 = $img2;
+
+        return $this;
+    }
+
+    /**
+     * Get img2
+     *
+     * @return \WP\ExoBundle\Entity\Image
+     */
+    public function getImg2()
+    {
+        return $this->img2;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param \WP\ExoBundle\Entity\Image $logo
+     *
+     * @return Homepage
+     */
+    public function setLogo(\WP\ExoBundle\Entity\Image $logo = null)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return \WP\ExoBundle\Entity\Image
+     */
+    public function getLogo()
+    {
+        return $this->logo;
     }
 }
-

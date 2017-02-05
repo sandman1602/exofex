@@ -30,6 +30,10 @@
                             </li>
                             <li class="divider"></li>
                             <li>
+                                <a href="{{ path("wp_exo_homepage") }}"><i class="fa fa-fw fa-power-off"></i> Retour exofex</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
                                 <a href="{{ path("fos_user_security_logout") }}"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                             </li>
                         </ul>
@@ -38,14 +42,14 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="{{ path('wp_exo_adminIndex') }}"><i class="fa fa-fw fa-dashboard"></i> Tableau de
+                        <li>
+                            <a {% if app.request.get('_route') == "wp_exo_adminIndex" %}class="current"{% endif %} href="{{ path('wp_exo_adminIndex') }}"><i class="fa fa-fw fa-dashboard"></i> Tableau de
                                 bord</a>
                         </li>
 
                         <li>
                             {#<a href="javascript:;" data-toggle="collapse" data-target="#demo"><i#}
-                                         <a href="{{ path('wp_exo_homeAdmin') }}"><i class="fa fa-fw fa-arrows-v"></i> Gestion de l'accueil <i
+                                         <a {% if app.request.get('_route') == "wp_exo_homeAdmin" %}class="current"{% endif %} href="{{ path('wp_exo_homeAdmin') }}"><i class="fa fa-fw fa-arrows-v"></i> Gestion de l'accueil <i
                                         class="fa fa-fw fa-caret-down"></i></a>
 
                         </li>

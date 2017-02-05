@@ -19,33 +19,57 @@ class HomepageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('title1', TextType::class, array('label' => false,
-                'attr' =>
-                    [
-                        'placeholder'=>'Slogan',
-                    ]))
-            ->add('titleArticle1', TextType::class, array('label' => false,
-                'attr' =>
-                    [
-                        'placeholder'=>'Titre du 1er article',
-                    ]))
-            ->add('textArticle1', TextareaType::class, array('label' => false,
-                'attr' =>
-                    [
-                        'placeholder'=>'Description du ',
-                    ]))
-            ->add('titleArticle2', TextType::class)
-            ->add('textArticle2', TextareaType::class)
-            ->add('textContactme', TextareaType::class)
-            ->add('linkImg1', UrlType::class)
-            ->add('img1', ImageType::class)
-            ->add('linkImg2', UrlType::class)
-            ->add('img2', ImageType::class)
-            ->add('textLogo', TextareaType::class)
-            ->add('logo', ImageType::class)
-            ->add('submit', SubmitType::class)
-            ->add('reset', ResetType::class);
+//        $builder
+//            ->add('title1', TextType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Slogan',
+//                    ]))
+//            ->add('titleArticle1', TextType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Titre du 1er article',
+//                    ]))
+//            ->add('textArticle1', TextareaType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Description du 1er article ',
+//                    ]))
+//            ->add('titleArticle2', TextType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Titre du second article',
+//                    ]))
+//            ->add('textArticle2', TextareaType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Description du second article ',
+//                    ]))
+//            ->add('textContactme', TextareaType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Annonce de la page contact ',
+//                    ]))
+//            ->add('linkImg1', UrlType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Url du 1er site',
+//                    ]))
+//            ->add('img1', ImageType::class, array('label' => false))
+//            ->add('linkImg2', UrlType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Url du second site',
+//                    ]))
+//            ->add('img2', ImageType::class, array('label' => false))
+//            ->add('textLogo', TextareaType::class, array('label' => false,
+//                'attr' =>
+//                    [
+//                        'placeholder'=>'Règle du site',
+//                    ]))
+//            ->add('logo', ImageType::class, array('label' => false))
+//            ->add('submit', SubmitType::class, array('label' =>'Envoyer','attr'=>['class'=>'login-button float-l submit']))
+//            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
     }
 
     /**

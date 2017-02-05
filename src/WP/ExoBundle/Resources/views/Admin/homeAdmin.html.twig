@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
 
-    <div id="adminIndex" class="container-fluid">
+    <div id="homeAdmin" class="container-fluid">
 
         <!-- Page Heading -->
         <div class="row">
@@ -25,18 +25,16 @@
                     </li>
                 </ol>
             </div>
-            {#</div>#}
-            {#</div>#}
-            {% form_theme form "bootstrap_3_layout.html.twig" %}
             <div class="col-md-8">
-                {{ form_start(form) }}
+
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Slogan</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.title1) }}
+                        {% form_theme formTitle1 "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTitle1) }}
+                        {{ form(formTitle1) }}
                     </div>
                 </div>
 
@@ -51,24 +49,19 @@
                         <h4>Titre du 1er article</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.titleArticle1) }}
+                        {% form_theme formTitleArticle1 "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTitleArticle1) }}
+                        {{ form(formTitleArticle1) }}
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Description du 1er article</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.textArticle1) }}
+                        {% form_theme formTextArticle1 "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTextArticle1) }}
+                        {{ form(formTextArticle1) }}
                     </div>
                 </div>
 
@@ -83,57 +76,49 @@
                         <h4>Titre du second article</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.titleArticle2) }}
+                        {% form_theme formTitleArticle2 "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTitleArticle2) }}
+                        {{ form(formTitleArticle2) }}
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Description du second article</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.textArticle2) }}
+                        {% form_theme formTextArticle2 "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTextArticle2) }}
+                        {{ form(formTextArticle2) }}
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <hr>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Annonce de la page contact</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.textContactme) }}
+                        {% form_theme formTextContactMe "bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formTextContactMe) }}
+                        {{ form(formTextContactMe) }}
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <hr>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Lien externe 1</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.linkImg1) }}
-                        {{ form_row(form.img1)}}
+                        {% form_theme formExternalLink1"bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formExternalLink1) }}
+                        {{ form(formExternalLink1) }}
                     </div>
                 </div>
                 <div class="row">
@@ -141,15 +126,14 @@
                         <hr>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-5">
                         <h4>Lien externe 2</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.linkImg2) }}
-                        {{ form_row(form.img2)}}
+                        {% form_theme formExternalLink2"bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formExternalLink2) }}
+                        {{ form(formExternalLink2) }}
                     </div>
                 </div>
                 <div class="row">
@@ -163,9 +147,9 @@
                         <h4>Règle du site</h4>
                     </div>
                     <div class="col-md-7">
-                        {{ form_errors(form) }}
-                        {{ form_row(form.textLogo) }}
-                        {{ form_row(form.logo)}}
+                        {% form_theme formRules"bootstrap_3_layout.html.twig" %}
+                        {{ form_errors(formRules) }}
+                        {{ form(formRules) }}
                     </div>
                 </div>
                 <div class="row">
@@ -173,11 +157,11 @@
                         <hr>
                     </div>
                 </div>
-                {{ form_end(form) }}
             </div>
 
         </div>
     </div>
+
     {% block js %}
         {#<script src="{{ asset ("public/js/jquery.js") }}"></script>#}
         <script src="{{ asset ("public/js/exoProfile.js") }}"></script>

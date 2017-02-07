@@ -15,7 +15,9 @@ class SupplyRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('s')
             ->leftJoin('s.user','u')
             ->addSelect('u')
+            ->where('s.isValidate = :val')
             ->orderBy('s.id','desc')
+            ->setParameter('val','0')
             ->getQuery();
 
         $query->setFirstResult(($page-1) * $nbPerPage)->setMaxResults($nbPerPage);

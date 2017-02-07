@@ -20,6 +20,15 @@
             </div>
         </div>
         <!-- /.row -->
+        {% if app.session.flashBag.has('notice') %}
+            <div class="row">
+                <div class="col-md-6">
+                    {% for msg in app.session.flashBag.get('notice') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
         <!-- Content Row -->
         <div class="row">
             <!-- Contact Details Column -->

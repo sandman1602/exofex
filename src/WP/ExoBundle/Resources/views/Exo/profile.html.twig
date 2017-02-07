@@ -138,7 +138,7 @@
                                                 href="{{ path('WP_exo_askingModif',{'id':asking.id}) }}">Modifier</a>
                                     </button>
                                     {% if asking.isValidate == 0 %}
-                                    <button class="btn btn-success pull-right validateAsking" data-id="ask{{- asking.id }}" data-path="{{ path('wp_exo_askingPostValid',{'id':asking.id}) }}">
+                                    <button id="buttonask{{ asking.id }}" class="btn btn-success pull-right validateAsking"  data-id="ask{{- asking.id }}" data-path="{{ path('wp_exo_askingPostValid',{'id':asking.id}) }}">
                                                 noter ce post comme validé
                                     </button>
                                         {% endif %}
@@ -207,7 +207,7 @@
                                                 href="{{ path('WP_exo_supplyModif',{'id':supply.id}) }}">Modifier</a>
                                     </button>
                                     {% if supply.isValidate == 0 %}
-                                        <button class="btn btn-success pull-right validateSupply" data-id="sup{{- supply.id }}" data-path="{{ path('wp_exo_supplyPostValid',{'id':supply.id}) }}">
+                                        <button id="buttonsup{{ supply.id }}" class="btn btn-success pull-right validateSupply" data-id="sup{{- supply.id }}" data-path="{{ path('wp_exo_supplyPostValid',{'id':supply.id}) }}">
                                             noter ce post comme validé
                                         </button>
                                     {% endif %}
@@ -222,6 +222,6 @@
     </div>
 {% endblock %}
 {% block js %}
-    {#<script src="{{ asset ("public/js/jquery.js") }}"></script>#}
+    <script src="{{ asset ("public/js/jquery.js") }}"></script>
     <script src="{{ asset ("public/js/exoProfile.js") }}"></script>
 {% endblock %}

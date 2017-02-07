@@ -54,7 +54,10 @@ html, body{
     margin-top: 13px !important;
 }
 p {
-    overflow:auto !important;
+    /*overflow:auto !important;*/
+    text-align: justify;
+    overflow:auto;
+
 }
 /*copyright*/
 .copyright{
@@ -837,8 +840,11 @@ button.login-button.btn.askingTitle:focus,button.login-button.btn.supplyTitle:fo
     opacity: 0.8 !important;
 }
 #homePage .eoe{
-    margin-top: 60px !important;
-    padding-left: 65px !important;
+    /*margin-top: 60px !important;*/
+    /*padding-left: 65px !important;*/
+    text-align:center;
+    margin:auto;
+
 }
 #homePage .page-header{
     margin-top: 120px !important;

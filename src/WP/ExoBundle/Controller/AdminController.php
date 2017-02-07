@@ -10,6 +10,7 @@ namespace WP\ExoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -91,113 +92,170 @@ class AdminController extends Controller
             $home = new Homepage();
         }
 
-//        $form = $this->get('form.factory')->create(HomepageType::class,$home);
-//        $formTitle1 = $this -> get('form.factory')->createNamed('form_title1',null,$home,['data_class'=>'WP\ExoBundle\Entity\Homepage'])
-        $formTitle1 = $this->get('form.factory')->createNamed('form_title1', HomepageType::class, null, ['data_class' => null])
+//       $form = $this->get('form.factory')->create(HomepageType::class,$home);
+        $formTitle1 = $this->get('form.factory')->createNamedBuilder('form_title1', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('title1', TextType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Slogan',
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formTitleArticle1 = $this->get('form.factory')->createNamed('form_TitleArticle1', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+        $formTitleArticle1 = $this->get('form.factory')->createNamedBuilder('form_TitleArticle1', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('titleArticle1', TextType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Titre du 1er article',
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formTextArticle1 = $this->get('form.factory')->createNamed('form_TextArticle1', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formTextArticle1 = $this->get('form.factory')->createNamedBuilder('form_TextArticle1', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('textArticle1', TextareaType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Description du 1er article',
-                        'rows'=>'4',
-                        'maxlength'=>'225'
+                        'rows' => '4',
+                        'maxlength' => '225'
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formTitleArticle2 = $this->get('form.factory')->createNamed('form_TitleArticle2', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formTitleArticle2 = $this->get('form.factory')->createNamedBuilder('form_TitleArticle2', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('titleArticle2', TextType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Titre du second article',
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formTextArticle2 = $this->get('form.factory')->createNamed('form_TextArticle2', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formTextArticle2 = $this->get('form.factory')->createNamedBuilder('form_TextArticle2', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('textArticle2', TextareaType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Description du second article',
-                        'rows'=>'4',
-                        'maxlength'=>'225'
+                        'rows' => '4',
+                        'maxlength' => '225'
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formTextContactMe = $this->get('form.factory')->createNamed('form_TextContactMe', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formTextContactMe = $this->get('form.factory')->createNamedBuilder('form_TextContactMe', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('textContactme', TextareaType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Annonce de la page contact',
-                        'rows'=>'4',
-                        'maxlength'=>'185'
+                        'rows' => '4',
+                        'maxlength' => '185'
                     ]))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formExternalLink1 = $this->get('form.factory')->createNamed('form_ExternalLink1', HomepageType::class, null, ['data_class' => null])
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formExternalLink1 = $this->get('form.factory')->createNamedBuilder('form_ExternalLink1', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('linkImg1', UrlType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Lien vers le 1er site',
                     ]))
-            ->add('img1', ImageType ::class, array ('label'=> false, 'required'=>false))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formExternalLink2 = $this->get('form.factory')->createNamed('form_ExternalLink2', HomepageType::class, null, ['data_class' => null])
+            ->add('img1', ImageType ::class, array('label' => false, 'required' => false,
+                'attr' => [
+                    'class' => 'chooseFile'
+
+                ]
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formExternalLink2 = $this->get('form.factory')->createNamedBuilder('form_ExternalLink2', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('linkImg2', UrlType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Lien vers le second site',
                     ]))
-            ->add('img2', ImageType ::class, array ('label'=> false, 'required'=>false))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
-        $formRules = $this->get('form.factory')->createNamed('form_Rules', HomepageType::class, null, ['data_class' => null])
+            ->add('img2', ImageType ::class, array('label' => false, 'required' => false,
+                'attr' => [
+                    'class' => 'chooseFile'
+
+                ]
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formRules = $this->get('form.factory')->createNamedBuilder('form_Rules', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
             ->add('textLogo', TextareaType::class, array('label' => false,
                 'attr' =>
                     [
                         'placeholder' => 'Règles du site',
-                        'rows'=>'6',
-                        'maxlength'=>'500'
+                        'rows' => '6',
+                        'maxlength' => '500'
                     ]))
-            ->add('logo', ImageType ::class, array ('label'=> false, 'required'=>false))
-            ->add('submit', SubmitType::class, array('label' =>'Modifier','attr'=>['class'=>'login-button float-l submit']))
-            ->add('reset', ResetType::class, array('label' =>'Réinitialiser','attr'=>['class'=>'login-button']));
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
+
+        $formLogo = $this->get('form.factory')->createNamedBuilder('form_Logo', FormType::class, $home, ['data_class' => 'WP\ExoBundle\Entity\Homepage'])
+            ->add('logo', ImageType ::class, array('label' => false, 'required' => false,
+                'attr' => [
+                    'class' => 'chooseFile'
+
+                ]
+            ))
+            ->add('submit', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'login-button float-l submit']))
+            ->add('reset', ResetType::class, array('label' => 'Réinitialiser', 'attr' => ['class' => 'login-button']))
+            ->getForm();
 
 
-        if ($request->isMethod('POST') && $formTitle1 && $formTitleArticle1 && $formTextArticle1 && $formTitleArticle2 && $formTextArticle2 && $formTextContactMe && $formExternalLink1 && $formExternalLink2 && $formRules->handleRequest($request)->isValid()) {
+        $formTitle1->handleRequest($request);
+        $formTitleArticle1->handleRequest($request);
+        $formTextArticle1->handleRequest($request);
+        $formTitleArticle2->handleRequest($request);
+        $formTextArticle2->handleRequest($request);
+        $formTextContactMe->handleRequest($request);
+        $formExternalLink1->handleRequest($request);
+        $formExternalLink2->handleRequest($request);
+        $formRules->handleRequest($request);
+        $formLogo->handleRequest($request);
+        $verification =
+            (
+                ($formTitle1->isSubmitted() AND $formTitle1->isValid()) OR
+                ($formTitleArticle1->isSubmitted() AND $formTitleArticle1->isValid()) OR
+                ($formTextArticle1->isSubmitted() AND $formTextArticle1->isValid()) OR
+                ($formTitleArticle2->isSubmitted() AND $formTitleArticle2->isValid()) OR
+                ($formTextArticle2->isSubmitted() AND $formTextArticle2->isValid()) OR
+                ($formTextContactMe->isSubmitted() AND $formTextContactMe->isValid()) OR
+                ($formExternalLink1->isSubmitted() AND $formExternalLink1->isValid()) OR
+                ($formExternalLink2->isSubmitted() AND $formExternalLink2->isValid()) OR
+                ($formRules->isSubmitted() AND $formRules->isValid()) OR
+                ($formLogo->isSubmitted() AND $formLogo->isValid())
+            );
+
+        if ($verification) {
             $em->persist($home);
             $em->flush();
-
             $request->getSession()->getFlashBag()->add('notice', 'Données modifiées');
-
             return $this->redirectToRoute('wp_exo_homeAdmin');
         }
 
         return $this->render('WPExoBundle:Admin:homeAdmin.html.twig', array(
-//                'form' => $form->createView()
                 'formTitle1' => $formTitle1->createView(),
                 'formTitleArticle1' => $formTitleArticle1->createView(),
                 'formTextArticle1' => $formTextArticle1->createView(),
                 'formTitleArticle2' => $formTitleArticle2->createView(),
                 'formTextArticle2' => $formTextArticle2->createView(),
                 'formTextContactMe' => $formTextContactMe->createView(),
-                'formExternalLink1' => $formExternalLink1-> createView(),
-                'formExternalLink2' => $formExternalLink2-> createView(),
-                'formRules'=> $formRules->createView()
+                'formExternalLink1' => $formExternalLink1->createView(),
+                'formExternalLink2' => $formExternalLink2->createView(),
+                'formRules' => $formRules->createView(),
+                'formLogo' => $formLogo->createView()
             )
         );
 

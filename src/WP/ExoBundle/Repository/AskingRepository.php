@@ -16,7 +16,9 @@ class AskingRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('a')
             ->leftJoin('a.user','u')
             ->addSelect('u')
+            ->where('a.isValidate = :val')
             ->orderBy('a.id','desc')
+            ->setParameter('val','0')
             ->getQuery();
 
         $query->setFirstResult(($page-1) * $nbPerPage)->setMaxResults($nbPerPage);

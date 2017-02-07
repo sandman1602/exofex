@@ -33,24 +33,26 @@ $(document).ready(function () {
 
 
     $(".validateAsking").click(function () {
+        var askId = $(this).data('id');
         $.ajax({
-            url: $('.validateAsking').data('path'),
+            url: $(this).data('path'),
             method: 'POST',
             success: function (data) {
-                $('#' + $('.validateAsking').data('id')).addClass('isvalid');
-                $('.validateAsking').remove();
+                $('#' + askId).addClass('isvalid');
+                $('#button' + askId).remove();
             }
         });
 
     });
 
     $('.validateSupply').click(function () {
+        var supId = $(this).data('id');
         $.ajax({
-            url: $('.validateSupply').data('path'),
+            url:   $(this).data('path'),
             method: 'POST',
             success: function (data) {
-                $('#' + $('.validateSupply').data('id')).addClass('isvalid');
-                $('.validateSupply').remove();
+                $('#' + supId).addClass('isvalid');
+                $('#button' + supId).remove();
             }
         });
     });

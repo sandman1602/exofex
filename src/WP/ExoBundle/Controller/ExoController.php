@@ -56,6 +56,7 @@ class ExoController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $asking->setUser($this->getUser());
+            $asking->setIsValidate(0);
             $em->persist($asking);
             $em->flush();
 
@@ -93,7 +94,7 @@ class ExoController extends Controller
             $em->persist($comment);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Commentaire ajouté.');
+            $request->getSession()->getFlashBag()->add('notice2', 'Commentaire ajouté.');
 
             return $this->redirectToRoute('wp_exo_askingPost', ['id' => $asking->getId()]);
         }
@@ -182,6 +183,7 @@ class ExoController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $supply->setIsValidate(0);
             $user = $this->getUser();
             $supply->setUser($user);
             $em->persist($supply);
@@ -412,7 +414,6 @@ class ExoController extends Controller
         $em->flush();
 
         return new Response();
-        /*Sabotage !!!*/
     }
 
 

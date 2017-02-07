@@ -1,4 +1,11 @@
 {% extends "::layout.html.twig" %}
+
+{% block css %}
+    <link href="{{ asset("public/css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/sb-admin.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/exofex.css") }}" rel="stylesheet">
+    <link href="{{ asset ("public/css/adminExofex.css") }}" rel="stylesheet">
+{% endblock %}
 {% block title %}
     {{ parent() }}
 {% endblock %}
@@ -43,13 +50,13 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a {% if app.request.get('_route') == "wp_exo_adminIndex" %}class="current"{% endif %} href="{{ path('wp_exo_adminIndex') }}"><i class="fa fa-fw fa-dashboard"></i> Tableau de
+                            <a {% if app.request.get('_route') == "wp_exo_adminIndex" %}class="adminCurrent"{% endif %} href="{{ path('wp_exo_adminIndex') }}"><i class="fa fa-fw fa-dashboard"></i> Tableau de
                                 bord</a>
                         </li>
 
                         <li>
                             {#<a href="javascript:;" data-toggle="collapse" data-target="#demo"><i#}
-                                         <a {% if app.request.get('_route') == "wp_exo_homeAdmin" %}class="current"{% endif %} href="{{ path('wp_exo_homeAdmin') }}"><i class="fa fa-fw fa-arrows-v"></i> Gestion de l'accueil <i
+                                         <a {% if app.request.get('_route') == "wp_exo_homeAdmin" %}class="adminCurrent"{% endif %} href="{{ path('wp_exo_homeAdmin') }}"><i class="fa fa-fw fa-arrows-v"></i> Gestion de l'accueil <i
                                         class="fa fa-fw fa-caret-down"></i></a>
 
                         </li>

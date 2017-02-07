@@ -151,6 +151,7 @@ class Image
                 $this->getUploadRootDir(),
                 $this->id.'.'.$this->url
         );
+        chmod ($this->getUploadRootDir().'/'.$this->id.'.'.$this->url, 0644);
     }
 
     /**
